@@ -1,27 +1,27 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+# ~/.bashrc: wykonywany przez bash(1) dla powłok nie-logowań.
+# zobacz /usr/share/doc/bash/examples/startup-files (w pakiecie bash-doc)
+# na przykłady
 
 export PATH="/home/predefin/.local/bin:$PATH"
-# If not running interactively, don't do anything
+# Jeśli powłoka nie jest w trybie interaktywnym, niczego nie rób
 case $- in
     *i*) ;;
       *) return;;
 esac
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
+# nie wstawiaj do historii duplikatów czy linijek zaczynających się od spacji.
+# Sprawdź bash(1) po więcej opcji
 HISTCONTROL=ignoreboth
 
-# append to the history file, don't overwrite it
+# dopisz do pliku historii, nie nadpisuj
 shopt -s histappend
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+# dla ustawienia długości historii sprawdź HISTSIZE i HISTFILESIZE w bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
+# sprawdź po każdej komendzie wielkość okna i, jeśli trzeba,
+# zaktualizuj liczby WIERSZY i KOLUMN.
 shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
@@ -116,6 +116,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+# to samo, tyle że dla pipx
+eval "$(register-python-argcomplete pipx)"
 
 PATH="/home/predefin/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/predefin/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
